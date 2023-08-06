@@ -1,6 +1,7 @@
-const inquirer = require('inquirer')
-const fs = require('fs');
-const Circle = require('./lib/shapes.js')
+import inquirer from 'inquirer'
+import fs from 'fs';
+import {Circle, Triangle, Square} from './lib/shapes.js'
+
 
 const questions = [
     {
@@ -31,11 +32,21 @@ function writeToFile(fileName, data) {
 
 function init() {
     inquirer.prompt(questions).then((answers) => {
-        const shape = new Circle(answers.shape,answers.text,answers.color);
+        let shape
+        
+        if(answers.shape === 'circle'){
+             shape = new Circle(answers.shape,answers.text,answers.color);
+        }
+
+        if(answers.shape === 'square'){
+            shape = new Square(answers.shape,answers.text,answers.color);
+       }
+        
+        if(answers.shape === 'triangle'){
+             shape = new Triangle(answers.shape,answers.text,answers.color);
+        }
+        
         writeToFile(answers.shape, shape.render())
-        console.log(answers.shape)
-        console.log(answers.color)
-        console.log(answers.text)
         })  
 }
 
