@@ -1,0 +1,6 @@
+
+    <svg height="400" width="400">
+    <circle cx = "100" cy = "100" r="60" fill=undefined />
+    <text x="0" y="0">undefined</text>
+    </svg>
+    
